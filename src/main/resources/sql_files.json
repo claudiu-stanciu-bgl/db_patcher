@@ -1,0 +1,16 @@
+[
+  {
+    "index": 1,
+    "sql": {
+      "patchFile": "file.sql",
+      "rollbackFile": "file_roll.sql"
+    }
+  },
+  {
+    "index": 2,
+    "sql": {
+      "patchFile": "file.sql",
+      "rollbackFile": "file_roll.sql"
+    }
+  }
+]

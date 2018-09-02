@@ -1,4 +1,4 @@
-import Dependencies._
+import sbt.Keys.libraryDependencies
 
 lazy val commonSettings = Seq(
   organization := "com.ctm",
@@ -26,5 +26,12 @@ lazy val commonSettings = Seq(
 lazy val root = Project("sql_loader", file("."))
   .settings(commonSettings)
   .settings(
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    libraryDependencies += "com.typesafe" % "config" % "1.3.2",
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.14",
+    libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.5.14" % Test,
+    libraryDependencies += "org.scalikejdbc" %% "scalikejdbc" % "3.3.+",
+    libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.11.1",
+    libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1",
+    libraryDependencies += "org.postgresql" % "postgresql" % "42.2.4"
   )
