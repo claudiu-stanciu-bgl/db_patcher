@@ -19,7 +19,8 @@ lazy val commonSettings = Seq(
     "-language:reflectiveCalls",
     "-language:implicitConversions"
   ),
-  fork in Test := true,
+  fork in test := true,
+  fork in run := true,
   parallelExecution in Test := false
 )
 
@@ -31,7 +32,7 @@ lazy val root = Project("sql_loader", file("."))
     libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.14",
     libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.5.14" % Test,
     libraryDependencies += "org.scalikejdbc" %% "scalikejdbc" % "3.3.+",
-    libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.11.1",
-    libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1",
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
+    libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
     libraryDependencies += "org.postgresql" % "postgresql" % "42.2.4"
   )

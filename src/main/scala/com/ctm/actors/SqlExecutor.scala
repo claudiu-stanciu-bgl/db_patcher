@@ -22,7 +22,7 @@ class SqlExecutor extends Actor with ActorLogging {
     case ExecuteSql(db, sql) =>
       println(s"executing query on $db")
       using(DB(ConnectionPool.borrow())) { db =>
-        db.readOnly { implicit session =>
+        db.autoCommit { implicit session =>
           sql"select * from mytable;".map(rs => println(s"${rs.string("field1")}|${rs.int("field2")}")).list().apply()
         }
       }

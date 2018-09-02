@@ -1,3 +1,1 @@
-
-alter table model.sales drop column frequency;
-
+drop table model.Variant_Assigned;
