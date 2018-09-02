@@ -3,7 +3,7 @@ CREATE TABLE model.Variant_Assigned
 (
 	Variant_Assigned_UID VARCHAR(50) NOT NULL,
 	Correlation_ID VARCHAR(50),
-	Event_ID VARCHAR(50) DISTKEY NOT NULL,
+	Event_ID VARCHAR(50) NOT NULL,
 	Event_Name VARCHAR(255),
 	Received_At Timestamp,
 	Source_IP VARCHAR(255),

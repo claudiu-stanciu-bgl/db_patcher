@@ -15,7 +15,7 @@ CREATE TABLE model.Account_Created
 	ip_address VARCHAR(255),
 	user_name VARCHAR(255),
 	client_id VARCHAR(50),
-	Row_Create_Date Timestamp NOT NULL DEFAULT cast(getdate() as Timestamp),
+	Row_Create_Date Timestamp NOT NULL,
 	Source VARCHAR(50) NOT NULL DEFAULT 'EventSink'
 );
 ALTER TABLE model.account_created
@@ -40,7 +40,7 @@ CREATE TABLE model.Authorization_Granted
 	user_agent VARCHAR(2000),
 	ip_address VARCHAR(255),
 	client_id VARCHAR(50),
-	Row_Create_Date Timestamp NOT NULL DEFAULT cast(getdate() as Timestamp),
+	Row_Create_Date Timestamp NOT NULL,
 	Source VARCHAR(50) NOT NULL DEFAULT 'EventSink'
 );
 ALTER TABLE model.Authorization_Granted
