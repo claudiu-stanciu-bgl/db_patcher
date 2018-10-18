@@ -6,6 +6,7 @@ import scala.util.{Failure, Success, Try}
 import com.typesafe.config.ConfigFactory
 import com.typesafe.scalalogging.StrictLogging
 import net.ceedubs.ficus.Ficus._
+import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import scalikejdbc._
 
 object Main extends App with StrictLogging {
@@ -21,10 +22,9 @@ object Main extends App with StrictLogging {
     }
 
     val dbConfig = config.as[DatabaseConfig]("app.db")
-    val dbPatchesDir = config.as[String]("app.patches-dir")
+    val dbPatchesDir = new File(config.as[String]("app.patches-dir"))
 
-    val dbPatchFiles = new File(dbPatchesDir).listFiles().filter(_.isFile).filter(!_.toString.toLowerCase.contains("rollback"))
-    val dbPatches = dbPatchFiles.map(DbPatch(_)).sorted
+    val dbPatches = DbPatchesHelper(dbPatchesDir)
 
     Class.forName("org.postgresql.Driver")
 
