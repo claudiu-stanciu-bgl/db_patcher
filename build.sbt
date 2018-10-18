@@ -1,7 +1,7 @@
 import sbt.Keys.libraryDependencies
 
 lazy val commonSettings = Seq(
-  organization := "com.ctm",
+  organization := "com.comparethemarket",
   scalaVersion := "2.12.6",
   scalacOptions ++= Seq(
     "-target:jvm-1.8",
@@ -24,15 +24,15 @@ lazy val commonSettings = Seq(
   parallelExecution in Test := false
 )
 
-lazy val root = Project("sql_loader", file("."))
+lazy val root = Project("db_patcher", file("."))
   .settings(commonSettings)
   .settings(
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
     libraryDependencies += "com.typesafe" % "config" % "1.3.2",
-    libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.14",
-    libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.5.14" % Test,
+    libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
+    libraryDependencies += "com.iheart" %% "ficus" % "1.4.3",
     libraryDependencies += "org.scalikejdbc" %% "scalikejdbc" % "3.3.+",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
-    libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
     libraryDependencies += "org.postgresql" % "postgresql" % "42.2.4"
+
   )

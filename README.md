@@ -1,1 +1,1 @@
-# Load SQL scripts to DB
+# Patch DBs
