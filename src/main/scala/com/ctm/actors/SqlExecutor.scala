@@ -30,7 +30,6 @@ class SqlExecutor extends Actor with StrictLogging {
           } catch {
             case ex:SQLException =>
               sender ! false
-//              throw ex
           }
         }
       }

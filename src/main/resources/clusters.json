@@ -4,11 +4,5 @@
     "user": "user",
     "password": "",
     "url": "jdbc:redshift.."
-  },
-  {
-    "name": "db2",
-    "user": "user",
-    "password": "",
-    "url": "jdbc:redshift.."
   }
 ]

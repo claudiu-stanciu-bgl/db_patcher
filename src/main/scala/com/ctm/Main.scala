@@ -18,9 +18,8 @@ object Main extends App with StrictLogging {
     val sql1 = new SqlQuery(1, "sql/query1.sql", "sql/query1_rollback.sql")
     val sql2 = new SqlQuery(2, "sql/query2.sql", "sql/query2_rollback.sql")
 
-    val db1 = new DatabaseConfig("db1", "claudiustanciu", "", "jdbc:postgresql://localhost:5432/my_database1")
+
     ConnectionPool.add("db1", db1.url, db1.user, db1.password)
-    val db2 = new DatabaseConfig("db2", "claudiustanciu", "", "jdbc:postgresql://localhost:5432/my_database2")
     ConnectionPool.add("db2", db2.url, db2.user, db2.password)
 
     val dbList = List(db1, db2)
@@ -30,7 +29,6 @@ object Main extends App with StrictLogging {
 
     dbList.foreach(sqlPatcher ! PatchDB(_))
 
-    system.
   }
 
   match {
