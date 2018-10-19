@@ -29,7 +29,7 @@ object Main extends App with StrictLogging {
 
       merged.resolve()
     }
-
+    val isRollback = config.as[Option[Boolean]]("app.rollback").getOrElse(false)
     val dbConfig = config.as[DatabaseConfig]("app.db")
     val dbConfigDict = collection.mutable.Map[String, DatabaseConfig]()
     dbConfigDict(dbConfig.name) = dbConfig
@@ -47,7 +47,7 @@ object Main extends App with StrictLogging {
 
     val dbPatchesDir = new File(config.as[String]("app.patches-dir"))
 
-    val dbPatches = DbPatchesHelper(dbPatchesDir)
+    val dbPatches = DbPatchesHelper(dbPatchesDir, isRollback)
 
     val driverName = config.as[String]("app.driver-name")
     Class.forName(driverName)

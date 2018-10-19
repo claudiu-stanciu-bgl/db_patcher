@@ -4,28 +4,38 @@ import scala.util.{Failure, Success, Try}
 
 import com.comparethemarket.dbpatcher.config.DatabaseConfig
 import com.typesafe.scalalogging.StrictLogging
-import scalikejdbc.TxBoundary.Try._
-import scalikejdbc.{ConnectionPool, DB, SQL, using}
+import scalikejdbc.{ConnectionPool, using}
 
 object QueryExecutor extends StrictLogging {
 
   def runQuery(dbConfig: DatabaseConfig, sqlScript: String): Unit = {
-    logger.debug(s"Executing sqlPatch")
-
-    using(DB(ConnectionPool.get(dbConfig.name).borrow())) { db =>
-      db localTx { implicit session =>
-        Try {
-          val queries = sqlScript.split(";")
-          queries.foreach { query =>
-            SQL(query).execute.apply
+    using(ConnectionPool.get(dbConfig.name).borrow()) { conn =>
+      conn.setAutoCommit(false)
+      Try {
+        val stmtOBj = conn.createStatement
+        val queries = sqlScript.split(";")
+          .map(_.trim)
+          .filter(!_.startsWith("--"))
+          .filter { line =>
+            val lineLower = line.toLowerCase
+            !(lineLower.contains("transaction") || lineLower.contains("commit"))
           }
-        } match {
-          case Success(_) =>
-            logger.debug(s"Patched script")
-          case Failure(ex) =>
-            throw ex
+          .filter(!_.isEmpty)
+        queries.foreach { query =>
+          logger.debug(s"Running query: '" + query + "'")
+          stmtOBj.execute(query)
         }
+      } match {
+        case Success(_) =>
+          conn.commit()
+        case Failure(ex) =>
+          logger.error(s"Found exception. Rollback ...")
+          conn.rollback()
+          throw ex
       }
+
     }
+
+
   }
 }
