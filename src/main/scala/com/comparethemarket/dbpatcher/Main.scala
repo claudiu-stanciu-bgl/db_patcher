@@ -49,7 +49,8 @@ object Main extends App with StrictLogging {
 
     val dbPatches = DbPatchesHelper(dbPatchesDir)
 
-    Class.forName("org.postgresql.Driver")
+    val driverName = config.as[String]("app.driver-name")
+    Class.forName(driverName)
 
     ConnectionPool.add(dbConfig.name, dbConfig.url, dbConfig.user, dbConfig.password)
 

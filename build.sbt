@@ -33,6 +33,8 @@ lazy val root = Project("db_patcher", file("."))
     libraryDependencies += "org.scalikejdbc" %% "scalikejdbc" % "3.3.+",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
     libraryDependencies += "org.postgresql" % "postgresql" % "42.2.4",
-    libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.0"
-
+    libraryDependencies += "com.amazon.redshift" % "redshift-jdbc42" % "1.2.18.1036",
+    libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.0")
+  .settings(
+    resolvers += "aws-redshift" at "https://s3.amazonaws.com/redshift-maven-repository/release"
   )
