@@ -1,2 +1,2 @@
-DROP TABLE  model.Account_Created CASCADE;
-DROP TABLE  model.Authorization_Granted CASCADE;
+DROP TABLE  dummy_model.dummy_account CASCADE;
+DROP TABLE  dummy_model.dummy_auth CASCADE;

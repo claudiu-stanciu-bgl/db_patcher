@@ -1,1 +1,1 @@
-CREATE SCHEMA model;
+CREATE SCHEMA dummy_model;

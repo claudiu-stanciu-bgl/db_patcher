@@ -19,8 +19,7 @@ lazy val commonSettings = Seq(
     "-language:reflectiveCalls",
     "-language:implicitConversions"
   ),
-  fork in test := true,
-  fork in run := true,
+  fork := true,
   parallelExecution in Test := false
 )
 
@@ -33,6 +32,7 @@ lazy val root = Project("db_patcher", file("."))
     libraryDependencies += "com.iheart" %% "ficus" % "1.4.3",
     libraryDependencies += "org.scalikejdbc" %% "scalikejdbc" % "3.3.+",
     libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3",
-    libraryDependencies += "org.postgresql" % "postgresql" % "42.2.4"
+    libraryDependencies += "org.postgresql" % "postgresql" % "42.2.4",
+    libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.0"
 
   )

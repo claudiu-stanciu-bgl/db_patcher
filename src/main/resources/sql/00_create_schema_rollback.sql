@@ -1,1 +1,1 @@
-DROP SCHEMA model CASCADE;
+DROP SCHEMA dummy_model CASCADE;

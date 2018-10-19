@@ -1,1 +1,1 @@
-drop table model.Variant_Assigned;
+drop table dummy_model.dummy_variant;

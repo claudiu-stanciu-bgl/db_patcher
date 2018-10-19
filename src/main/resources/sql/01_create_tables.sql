@@ -1,5 +1,5 @@
 -- ACCOUNT CREATED
-CREATE TABLE model.Account_Created
+CREATE TABLE dummy_model.dummy_account
 (
 	Event_ID VARCHAR(50) NOT NULL,
 	Event_Name VARCHAR(255),
@@ -18,13 +18,13 @@ CREATE TABLE model.Account_Created
 	Row_Create_Date Timestamp NOT NULL,
 	Source VARCHAR(50) NOT NULL DEFAULT 'EventSink'
 );
-ALTER TABLE model.account_created
+ALTER TABLE dummy_model.dummy_account
 ADD CONSTRAINT account_created_pkey
 PRIMARY KEY (event_id);
 
 
 -- AUTHORISATION GRANTED
-CREATE TABLE model.Authorization_Granted
+CREATE TABLE dummy_model.dummy_auth
 (
 	Event_ID VARCHAR(50) NOT NULL,
 	Event_Name VARCHAR(255),
@@ -43,6 +43,6 @@ CREATE TABLE model.Authorization_Granted
 	Row_Create_Date Timestamp NOT NULL,
 	Source VARCHAR(50) NOT NULL DEFAULT 'EventSink'
 );
-ALTER TABLE model.Authorization_Granted
+ALTER TABLE dummy_model.dummy_auth
 ADD CONSTRAINT Authorization_Granted_pkey
 PRIMARY KEY (Event_ID);

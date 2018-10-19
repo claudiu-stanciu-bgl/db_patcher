@@ -1,4 +1,4 @@
-package com.comparethemarket.dbpatcher
+package com.comparethemarket.dbpatcher.config
 
 import java.io.File
 
