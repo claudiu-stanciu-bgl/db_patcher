@@ -14,7 +14,7 @@ object Main extends App with StrictLogging {
   Try {
     val parser = new scopt.OptionParser[CliConfig]("db_patcher") {
       head("scopt", "3.x")
-      opt[Int]("fromPatchIndex").valueName("1").action((x, c) =>
+      opt[Int]("fromPatchIndex").valueName("0").action((x, c) =>
         c.copy(fromPatchIndex = x)).text("set from which patch index to run")
       opt[Map[String, String]]("passwords").valueName("db1=pass1,db2=pass2...").action((x, c) =>
         c.copy(passwords = x)).text("set database password")

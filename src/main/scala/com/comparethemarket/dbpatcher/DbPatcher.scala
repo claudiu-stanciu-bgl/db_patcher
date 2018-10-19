@@ -12,8 +12,7 @@ object DbPatcher extends StrictLogging {
       .filter(_.index >= fromPatchIndex)
       .foreach {
         sqlPatch: DbPatch => {
-          logger.info(s"Executing query script ${sqlPatch.patchFile}")
-          logger.info(s"Executing patch #${sqlPatch.index}")
+          logger.info(s"Executing patch #${sqlPatch.index} - script ${sqlPatch.patchFile}")
           val sqlScript = Source.fromFile(sqlPatch.patchFile).getLines.mkString("\n")
           QueryExecutor.runQuery(db, sqlScript)
           logger.info(s"Finished patch #${sqlPatch.index}")
