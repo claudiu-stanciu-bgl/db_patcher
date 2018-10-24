@@ -1,5 +1,5 @@
 -- VARIANT ASSIGNED
-CREATE TABLE model.Variant_Assigned
+CREATE TABLE dummy_model.dummy_variant
 (
 	Variant_Assigned_UID VARCHAR(50) NOT NULL,
 	Correlation_ID VARCHAR(50),
@@ -22,6 +22,6 @@ CREATE TABLE model.Variant_Assigned
 	Row_Create_Date Timestamp NOT NULL,
 	Source VARCHAR(50) NOT NULL
 );
-ALTER TABLE model.Variant_Assigned
+ALTER TABLE dummy_model.dummy_variant
 ADD CONSTRAINT Variant_Assigned_UID_pkey
 PRIMARY KEY (Variant_Assigned_UID);

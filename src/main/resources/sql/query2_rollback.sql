@@ -1,1 +1,0 @@
-drop table model.Variant_Assigned;
